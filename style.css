@@ -6,4 +6,9 @@
    .error {
       @apply border-red-600;
    }
+
+   .errorParagraph {
+      @apply text-[0.9375rem];
+      @apply text-red-700;
+   }
 }
