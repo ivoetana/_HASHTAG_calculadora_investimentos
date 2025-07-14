@@ -16,7 +16,7 @@
             Calculadora de Investimentos
          </h1>
 
-         <form class="w-full bg-white rounded-3xl shadow-lg shadow-gray-400">
+         <form id="investiment-form" class="w-full bg-white rounded-3xl shadow-lg shadow-gray-400">
             <!-- INVESTIMENTO INICIAL -->
             <div class="flex w-full flex-col px-6 my-5">
                <label for="starting-amount" class="font-bold text-gray-700"
@@ -36,6 +36,7 @@
                      class="w-5/6 cursor-pointer focus:outline-none p-2 text-gray-700"
                      id="starting-amount"
                      placeholder="0.00"
+                     required
                   />
                </div>
             </div>
@@ -78,6 +79,7 @@
                      class="w-2/3 cursor-pointer focus:outline-none p-2 text-gray-700"
                      id="time-amount"
                      placeholder="0"
+                     required
                   />
                   <select
                      id="time-amount-period"
@@ -108,6 +110,7 @@
                      class="w-1/2 cursor-pointer focus:outline-none p-2 text-gray-700"
                      id="return-rate"
                      placeholder="0"
+                     required
                   />
                   <select
                      id="return-rate-period"
@@ -138,6 +141,7 @@
                      class="w-5/6 cursor-pointer focus:outline-none p-2 text-gray-700"
                      id="tax-rate"
                      placeholder="0"
+                     required
                   />
                </div>
             </div>
@@ -145,6 +149,8 @@
 
          <div class="flex justify-around gap-3">
             <button
+               id="calculate-results"
+               form="investiment-form"
                class="w-1/2 bg-blue-600 text-white uppercase py-3 rounded-lg font-medium hover:bg-blue-800 cursor-pointer"
             >
                Calcular
@@ -160,5 +166,6 @@
       <main>
          <p>Resultados</p>
       </main>
+      <script type="module" src="./main.js"></script>
    </body>
 </html>
