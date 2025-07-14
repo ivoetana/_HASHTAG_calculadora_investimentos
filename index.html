@@ -16,9 +16,12 @@
             Calculadora de Investimentos
          </h1>
 
-         <form id="investiment-form" class="w-full bg-white rounded-3xl shadow-lg shadow-gray-400">
+         <form
+            id="investiment-form"
+            class="w-full bg-white rounded-3xl shadow-lg shadow-gray-400"
+         >
             <!-- INVESTIMENTO INICIAL -->
-            <div class="flex w-full flex-col px-6 my-5">
+            <div class="flex w-full flex-col px-6 mt-4 h-[5.75rem]">
                <label for="starting-amount" class="font-bold text-gray-700"
                   >Investimento inicial</label
                >
@@ -39,10 +42,11 @@
                      required
                   />
                </div>
+               <p class="text-[0.9375rem] text-red-700 hidden">Mensagem de erro</p>
             </div>
 
             <!-- APORTES ADICIONAIS -->
-            <div class="flex w-full flex-col px-6 my-5">
+            <div class="flex w-full flex-col px-6 mt-2 h-[5.75rem]">
                <label
                   for="additional-contribution"
                   class="font-bold text-gray-700"
@@ -64,10 +68,11 @@
                      placeholder="0.00"
                   />
                </div>
+               <p class="text-[0.9375rem] text-red-700 hidden">Mensagem de erro</p>
             </div>
 
             <!-- PRAZO -->
-            <div class="flex w-full flex-col px-6 my-5">
+            <div class="flex w-full flex-col px-6 mt-2 h-[5.75rem]">
                <label for="time-amount" class="font-bold text-gray-700"
                   >Prazo</label
                >
@@ -89,10 +94,11 @@
                      <option value="yearly">Anual</option>
                   </select>
                </div>
+               <p class="text-[0.9375rem] text-red-700 hidden">Mensagem de erro</p>
             </div>
 
             <!-- RENTABILIDADE -->
-            <div class="flex w-full flex-col px-6 my-5">
+            <div class="flex w-full flex-col px-6 mt-2 h-[5.75rem]">
                <label for="return-rate" class="font-bold text-gray-700"
                   >Rentabilidade</label
                >
@@ -120,10 +126,11 @@
                      <option value="yearly">Anual</option>
                   </select>
                </div>
+               <p class="text-[0.9375rem] text-red-700 hidden">Mensagem de erro</p>
             </div>
 
             <!-- IMPOSTO SOBRE LUCRO -->
-            <div class="flex w-full flex-col px-6 my-5">
+            <div class="flex w-full flex-col px-6 my-2 h-[5.75rem]">
                <label for="tax-rate" class="font-bold text-gray-700"
                   >Imposto sobre lucro</label
                >
@@ -144,6 +151,7 @@
                      required
                   />
                </div>
+               <p class="text-[0.9375rem] text-red-700 hidden">Mensagem de erro</p>
             </div>
          </form>
 
