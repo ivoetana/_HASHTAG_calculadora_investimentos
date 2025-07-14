@@ -58,7 +58,8 @@ calculadora-investimentos/
 ├── postcss.config.js
 ├── package.json
 ├── vite.config.js
-└── /public             # (se utilizado)
+├── /public             # (se utilizado)
+└── /src 
 ```
 
 ---
