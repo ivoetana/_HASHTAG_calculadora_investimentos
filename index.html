@@ -3,6 +3,7 @@
    <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="./favicon.png" type="image/x-icon" />
       <title>Calculadora de Investimentos Impressionadora</title>
       <link rel="stylesheet" href="./style.css" />
    </head>
@@ -38,11 +39,11 @@
                      type="text"
                      class="w-5/6 cursor-pointer focus:outline-none p-2 text-gray-700"
                      id="starting-amount"
+                     name="starting-amount"
                      placeholder="0.00"
                      required
                   />
                </div>
-               <p class="text-[0.9375rem] text-red-700 hidden">Mensagem de erro</p>
             </div>
 
             <!-- APORTES ADICIONAIS -->
@@ -65,10 +66,10 @@
                      type="text"
                      class="w-5/6 cursor-pointer focus:outline-none p-2 text-gray-700"
                      id="additional-contribution"
+                     name="additional-contribution"
                      placeholder="0.00"
                   />
                </div>
-               <p class="text-[0.9375rem] text-red-700 hidden">Mensagem de erro</p>
             </div>
 
             <!-- PRAZO -->
@@ -83,18 +84,19 @@
                      type="text"
                      class="w-2/3 cursor-pointer focus:outline-none p-2 text-gray-700"
                      id="time-amount"
+                     name="time-amount"
                      placeholder="0"
                      required
                   />
                   <select
                      id="time-amount-period"
+                     name="time-amount-period"
                      class="w-1/3 text-center text-gray-700 cursor-pointer focus:outline-none border-l-2 border-slate-200 hover:bg-slate-500 hover:text-slate-200"
                   >
                      <option value="monthly">Mensal</option>
                      <option value="yearly">Anual</option>
                   </select>
                </div>
-               <p class="text-[0.9375rem] text-red-700 hidden">Mensagem de erro</p>
             </div>
 
             <!-- RENTABILIDADE -->
@@ -115,18 +117,19 @@
                      type="text"
                      class="w-1/2 cursor-pointer focus:outline-none p-2 text-gray-700"
                      id="return-rate"
+                     name="return-rate"
                      placeholder="0"
                      required
                   />
                   <select
                      id="return-rate-period"
+                     name="return-rate-period"
                      class="w-1/3 text-center text-gray-700 cursor-pointer focus:outline-none border-l-2 border-slate-200 hover:bg-slate-500 hover:text-slate-200"
                   >
                      <option value="monthly">Mensal</option>
                      <option value="yearly">Anual</option>
                   </select>
                </div>
-               <p class="text-[0.9375rem] text-red-700 hidden">Mensagem de erro</p>
             </div>
 
             <!-- IMPOSTO SOBRE LUCRO -->
@@ -147,11 +150,11 @@
                      type="text"
                      class="w-5/6 cursor-pointer focus:outline-none p-2 text-gray-700"
                      id="tax-rate"
+                     name="tax-rate"
                      placeholder="0"
                      required
                   />
                </div>
-               <p class="text-[0.9375rem] text-red-700 hidden">Mensagem de erro</p>
             </div>
          </form>
 
@@ -159,11 +162,13 @@
             <button
                id="calculate-results"
                form="investiment-form"
+               type="submit"
                class="w-1/2 bg-blue-600 text-white uppercase py-3 rounded-lg font-medium hover:bg-blue-800 cursor-pointer"
             >
                Calcular
             </button>
             <button
+            id="clear-form"
                class="w-1/2 bg-red-700 text-white uppercase py-3 rounded-lg font-medium hover:bg-red-900 cursor-pointer"
             >
                Limpar
