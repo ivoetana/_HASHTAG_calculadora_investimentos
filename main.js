@@ -1,7 +1,14 @@
 import { generateReturnsArray } from "./src/investimentsGoals.js";
+import { Chart } from "chart.js/auto";
 
+const finalMoneyChart = document.getElementById("final-money-distribution");
+const progressionChart = document.getElementById("progression");
 const form = document.getElementById("investiment-form");
 const clearFormButton = document.getElementById("clear-form");
+
+function formatCurrency(value) {
+   return value.toFixed(2);
+}
 
 function renderProgression(evt) {
    evt.preventDefault();
@@ -38,7 +45,35 @@ function renderProgression(evt) {
       returnRatePeriod
    );
 
-   console.log(returnsArray);
+   const finalInvestimentObject = returnsArray[returnsArray.length - 1];
+
+   new Chart(finalMoneyChart, {
+      type: "doughnut",
+      data: {
+         labels: ["Total investido", "Rendimento", "Imposto"],
+         datasets: [
+            {
+               data: [
+                  formatCurrency(finalInvestimentObject.investedAmount),
+                  formatCurrency(
+                     finalInvestimentObject.totalInterestReturns *
+                        (1 - taxRate / 100)
+                  ),
+                  formatCurrency(
+                     finalInvestimentObject.totalInterestReturns *
+                        (taxRate / 100)
+                  ),
+               ],
+               backgroundColor: [
+                  "rgb(255, 99, 132)",
+                  "rgb(54, 162, 235)",
+                  "rgb(255, 205, 86)",
+               ],
+               hoverOffset: 4,
+            },
+         ],
+      },
+   });
 }
 
 function clearForm() {
