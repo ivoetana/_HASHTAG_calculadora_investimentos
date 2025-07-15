@@ -5,6 +5,9 @@ const finalMoneyChart = document.getElementById("final-money-distribution");
 const progressionChart = document.getElementById("progression");
 const form = document.getElementById("investiment-form");
 const clearFormButton = document.getElementById("clear-form");
+// const calculateButton = document.getElementById('calculate-results');
+let doughnutChartReference = {};
+let progessionChartReference = {};
 
 function formatCurrency(value) {
    return value.toFixed(2);
@@ -15,6 +18,8 @@ function renderProgression(evt) {
    if (document.querySelector(".error")) {
       return;
    }
+
+   resetCharts();
 
    const startingAmount = Number(
       document.getElementById("starting-amount").value.replace(",", ".")
@@ -47,7 +52,7 @@ function renderProgression(evt) {
 
    const finalInvestimentObject = returnsArray[returnsArray.length - 1];
 
-   new Chart(finalMoneyChart, {
+   doughnutChartReference = new Chart(finalMoneyChart, {
       type: "doughnut",
       data: {
          labels: ["Total investido", "Rendimento", "Imposto"],
@@ -74,6 +79,56 @@ function renderProgression(evt) {
          ],
       },
    });
+
+   progessionChartReference = new Chart(progressionChart, {
+      type: "bar",
+      data: {
+         labels: returnsArray.map(
+            (investimentObject) => investimentObject.month
+         ),
+         datasets: [
+            {
+               label: "Total Investido",
+               data: returnsArray.map((investimentObject) =>
+                  formatCurrency(investimentObject.investedAmount)
+               ),
+               backgroundColor: "rgb(255, 99, 132)",
+            },
+            {
+               label: "Retorno de Investimento",
+               data: returnsArray.map((investimentObject) =>
+                  formatCurrency(investimentObject.interestReturns)
+               ),
+               backgroundColor: "rgb(54, 162, 235)",
+            },
+         ],
+      },
+      options: {
+         responsive: true,
+         scales: {
+            x: {
+               stacked: true,
+            },
+            y: {
+               stacked: true,
+            },
+         },
+      },
+   });
+}
+
+function isObjetctEmpty(obj) {
+   return Object.keys(obj).length === 0;
+}
+
+function resetCharts() {
+   if (
+      !isObjetctEmpty(doughnutChartReference) &&
+      !isObjetctEmpty(progessionChartReference)
+   ) {
+      doughnutChartReference.destroy();
+      progessionChartReference.destroy();
+   }
 }
 
 function clearForm() {
@@ -82,6 +137,8 @@ function clearForm() {
    form["time-amount"].value = "";
    form["return-rate"].value = "";
    form["tax-rate"].value = "";
+
+   resetCharts();
 
    const errorInputsContainers = document.querySelectorAll(".error");
 
