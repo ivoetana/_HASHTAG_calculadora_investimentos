@@ -15,27 +15,31 @@ const columnsArray = [
    {
       colunLabel: "Total Investido",
       accessor: "investedAmount",
-      format: (numberInfo) => formatCurrency(numberInfo),
+      format: (numberInfo) => formatCurrencyToTable(numberInfo),
    },
    {
       colunLabel: "Rendimento Mensal",
       accessor: "interestReturns",
-      format: (numberInfo) => formatCurrency(numberInfo),
+      format: (numberInfo) => formatCurrencyToTable(numberInfo),
    },
    {
       colunLabel: "Rendimento Total",
       accessor: "totalInterestReturns",
-      format: (numberInfo) => formatCurrency(numberInfo),
+      format: (numberInfo) => formatCurrencyToTable(numberInfo),
    },
    {
       colunLabel: "Quantia Total",
       accessor: "totalAmount",
-      format: (numberInfo) => formatCurrency(numberInfo),
+      format: (numberInfo) => formatCurrencyToTable(numberInfo),
    },
 ];
 
-function formatCurrency(value) {
+function formatCurrencyToTable(value) {
    return value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+}
+
+function formatCurrencyToGraph(value) {
+   return value.toFixed(2);
 }
 
 function renderProgression(evt) {
@@ -84,12 +88,12 @@ function renderProgression(evt) {
          datasets: [
             {
                data: [
-                  formatCurrency(finalInvestimentObject.investedAmount),
-                  formatCurrency(
+                  formatCurrencyToGraph(finalInvestimentObject.investedAmount),
+                  formatCurrencyToGraph(
                      finalInvestimentObject.totalInterestReturns *
                         (1 - taxRate / 100)
                   ),
-                  formatCurrency(
+                  formatCurrencyToGraph(
                      finalInvestimentObject.totalInterestReturns *
                         (taxRate / 100)
                   ),
@@ -115,14 +119,14 @@ function renderProgression(evt) {
             {
                label: "Total Investido",
                data: returnsArray.map((investimentObject) =>
-                  formatCurrency(investimentObject.investedAmount)
+                  formatCurrencyToGraph(investimentObject.investedAmount)
                ),
                backgroundColor: "rgb(255, 99, 132)",
             },
             {
                label: "Retorno de Investimento",
                data: returnsArray.map((investimentObject) =>
-                  formatCurrency(investimentObject.interestReturns)
+                  formatCurrencyToGraph(investimentObject.interestReturns)
                ),
                backgroundColor: "rgb(54, 162, 235)",
             },
@@ -212,6 +216,19 @@ for (const formElement of form) {
       formElement.addEventListener("blur", validateInput);
    }
 }
+
+const mainEl = document.querySelector("main");
+const carouselEl = document.getElementById("carousel");
+const previousButton = document.getElementById("slide-arrow-previous");
+const nextButton = document.getElementById("slide-arrow-next");
+
+nextButton.addEventListener("click", () => {
+   carouselEl.scrollLeft += mainEl.clientWidth;
+});
+
+previousButton.addEventListener("click", () => {
+   carouselEl.scrollLeft -= mainEl.clientWidth;
+});
 
 form.addEventListener("submit", renderProgression);
 clearFormButton.addEventListener("click", clearForm);
