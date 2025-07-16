@@ -80,13 +80,14 @@ function createTableBody(tableReference, tableItems, columnsArray) {
 
       if (itemIndex % 2 !== 0) {
          tableRow.classList.add("bg-green-100");
-        }else{
-          tableRow.classList.add("bg-green-200");
+      } else {
+         tableRow.classList.add("bg-green-200");
       }
 
       for (const tableColumn of columnsArray) {
+         const formatFn = tableColumn.format ?? ((info) => info);
          tableRow.innerHTML += /*html*/ `<td class="text-center">${
-            tableItem[tableColumn.accessor]
+            formatFn(tableItem[tableColumn.accessor])
          }</td>`;
       }
       tableBodyReference.appendChild(tableRow);
