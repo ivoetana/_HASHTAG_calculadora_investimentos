@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "chart.js": "^4.5.0",
-    "remixicon": "^4.6.0"
+    "remixicon": "^4.6.0",
+    "vanilla-masker": "^1.2.0"
   }
 }

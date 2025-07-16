@@ -1,7 +1,8 @@
 import { generateReturnsArray } from "./js/investimentsGoals.js";
 import { Chart } from "chart.js/auto";
 import { createTable } from "./js/table.js";
-import 'remixicon/fonts/remixicon.css';
+import "remixicon/fonts/remixicon.css";
+import VMasker from "vanilla-masker";
 
 const finalMoneyChart = document.getElementById("final-money-distribution");
 const progressionChart = document.getElementById("progression");
@@ -10,6 +11,12 @@ const clearFormButton = document.getElementById("clear-form");
 // const calculateButton = document.getElementById('calculate-results');
 let doughnutChartReference = {};
 let progessionChartReference = {};
+
+VMasker(document.getElementById("starting-amount")).maskMoney();
+VMasker(document.getElementById("additional-contribution")).maskMoney();
+VMasker(document.getElementById("time-amount")).maskNumber();
+VMasker(document.getElementById("return-rate")).maskMoney({ delimiter: "," });
+VMasker(document.getElementById("tax-rate")).maskMoney({ delimiter: "," });
 
 const columnsArray = [
    { colunLabel: "Mês", accessor: "month" },
@@ -52,24 +59,38 @@ function renderProgression(evt) {
    resetCharts();
 
    const startingAmount = Number(
-      document.getElementById("starting-amount").value.replace(",", ".")
+      document
+         .getElementById("starting-amount")
+         .value.replace(/\./g, "")
+         .replace(",", ".")
    );
 
    const additionalContribution = Number(
-      document.getElementById("additional-contribution").value.replace(",", ".")
+      document
+         .getElementById("additional-contribution")
+         .value.replace(/\./g, "")
+         .replace(",", ".")
    );
 
    const timeAmount = Number(document.getElementById("time-amount").value);
    const returnRate = Number(
-      document.getElementById("return-rate").value.replace(",", ".")
+      document
+         .getElementById("return-rate")
+         .value.replace(/\./g, "")
+         .replace(",", ".")
    );
 
    const returnRatePeriod = document.getElementById("return-rate-period").value;
    const timeAmountPeriod = document.getElementById("time-amount-period").value;
 
    const taxRate = Number(
-      document.getElementById("tax-rate").value.replace(",", ".")
+      document
+         .getElementById("tax-rate")
+         .value.replace(/\./g, "")
+         .replace(",", ".")
    );
+
+   console.log("startign amount: ", startingAmount);
 
    const returnsArray = generateReturnsArray(
       startingAmount,
@@ -182,13 +203,15 @@ function clearForm() {
 }
 
 function validateInput(evt) {
+   console.log(evt.target.value, typeof evt.target.value);
    if (evt.target.value === "") {
       return;
    }
 
    const { parentElement } = evt.target;
    const grandParentElement = evt.target.parentElement.parentElement;
-   const inputValue = evt.target.value.replace(",", ".");
+   const inputValue = evt.target.value.replace(/\./g, "").replace(",", ".");
+   console.log(inputValue, typeof inputValue);
 
    if (
       !parentElement.classList.contains("error") &&
