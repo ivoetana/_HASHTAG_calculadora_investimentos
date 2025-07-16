@@ -1,6 +1,7 @@
 import { generateReturnsArray } from "./js/investimentsGoals.js";
 import { Chart } from "chart.js/auto";
 import { createTable } from "./js/table.js";
+import 'remixicon/fonts/remixicon.css';
 
 const finalMoneyChart = document.getElementById("final-money-distribution");
 const progressionChart = document.getElementById("progression");

@@ -3,7 +3,11 @@
    <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon" />
+      <link
+         rel="shortcut icon"
+         href="./images/favicon.png"
+         type="image/x-icon"
+      />
       <title>Calculadora de Investimentos Impressionadora</title>
       <link rel="stylesheet" href="./src/css/style.css" />
    </head>
@@ -11,12 +15,14 @@
       <aside
          class="row-span-2 bg-emerald-300 flex flex-col justify-between py-5 px-3"
       >
-         <h1
-            class="text-2xl font-bold px-6 py-2 text-center underline underline-offset-8"
-         >
-            Calculadora de Investimentos
-         </h1>
-
+         <div class="text-center flex flex-col">
+            <i class="ri-exchange-dollar-fill text-9xl"></i>
+            <h1
+               class="text-2xl font-bold px-6 py-2 underline underline-offset-8"
+            >
+               Calculadora de Investimentos
+            </h1>
+         </div>
          <form
             id="investiment-form"
             class="w-full bg-white rounded-3xl shadow-lg shadow-gray-400"
@@ -165,12 +171,14 @@
                type="submit"
                class="w-1/2 bg-blue-600 text-white uppercase py-3 rounded-lg font-medium hover:bg-blue-800 cursor-pointer"
             >
+               <i class="ri-percent-fill"></i>
                Calcular
             </button>
             <button
                id="clear-form"
                class="w-1/2 bg-red-700 text-white uppercase py-3 rounded-lg font-medium hover:bg-red-900 cursor-pointer"
             >
+               <i class="ri-delete-bin-2-line"></i>
                Limpar
             </button>
          </div>
@@ -203,7 +211,7 @@
                   <p
                      class="font-bold text-lg bg-slate-200 w-full text-center rounded-md uppercase"
                   >
-                     Resultado Final
+                     <i class="ri-pie-chart-2-fill font-thin"></i> Resultado Final
                   </p>
                   <canvas id="final-money-distribution"></canvas>
                </div>
@@ -212,7 +220,7 @@
                   <p
                      class="font-bold text-lg bg-slate-200 w-full text-center rounded-md uppercase"
                   >
-                     Progressão
+                     <i class="ri-bar-chart-fill font-thin"></i> Progressão
                   </p>
                   <canvas id="progression"></canvas>
                </div>
@@ -225,7 +233,7 @@
                <p
                   class="font-bold text-lg bg-slate-200 w-full text-center rounded-md uppercase"
                >
-                  Resultados Mensais
+                  <i class="ri-line-height font-thin"></i> Resultados Mensais
                </p>
                <table id="results-table"></table>
             </section>
