@@ -203,7 +203,6 @@ function clearForm() {
 }
 
 function validateInput(evt) {
-   console.log(evt.target.value, typeof evt.target.value);
    if (evt.target.value === "") {
       return;
    }
@@ -211,7 +210,6 @@ function validateInput(evt) {
    const { parentElement } = evt.target;
    const grandParentElement = evt.target.parentElement.parentElement;
    const inputValue = evt.target.value.replace(/\./g, "").replace(",", ".");
-   console.log(inputValue, typeof inputValue);
 
    if (
       !parentElement.classList.contains("error") &&
