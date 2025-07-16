@@ -57,6 +57,7 @@ function renderProgression(evt) {
    }
 
    resetCharts();
+   resetTable();
 
    const startingAmount = Number(
       document
@@ -184,6 +185,12 @@ function resetCharts() {
    }
 }
 
+function resetTable() {
+   const table = document.querySelector("table");
+   table.innerHTML = "";
+   table.removeAttribute("class");
+}
+
 function clearForm() {
    form["starting-amount"].value = "";
    form["additional-contribution"].value = "";
@@ -192,6 +199,7 @@ function clearForm() {
    form["tax-rate"].value = "";
 
    resetCharts();
+   resetTable();
 
    const errorInputsContainers = document.querySelectorAll(".error");
 
